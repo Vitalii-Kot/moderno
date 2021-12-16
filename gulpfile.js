@@ -10,7 +10,7 @@ let gulp = require('gulp'),
     cssmin = require('gulp-cssmin'); 
 
 gulp.task('sass', function(){
-    return gulp.src('app/scss/style.scss') // ищет файл который нам нужен
+    return gulp.src('app/scss/**/*.scss') // ищет файл который нам нужен
             .pipe(sass({outputStyle: 'compressed'})) // переводит в css ('compressed') минимизированый/ или ('expanded') обычный
             .pipe(rename({suffix : '.min'}))
             .pipe(gulp.dest('app/css')) // указывает куда сохранить
@@ -56,7 +56,7 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch('app/scss/style.scss', gulp.parallel('sass')) // следим за этим файлом, все что в нем происходит вносим изменения
+    gulp.watch('app/scss/**/*.scss', gulp.parallel('sass')) // следим за этим файлом, все что в нем происходит вносим изменения
     gulp.watch('app/*.html', gulp.parallel('html'))
     gulp.watch('app/js/*.js', gulp.parallel('js'))
 });
